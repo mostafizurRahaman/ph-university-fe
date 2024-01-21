@@ -16,16 +16,16 @@ const router = createBrowserRouter([
             index: true,
             element: <Home />,
          },
-         {
-            path: "login",
-            element: <SignIn />,
-         },
       ],
+   },
+   {
+      path: "login",
+      element: <SignIn />,
    },
    {
       path: "/admin",
       element: <App />,
-      children: routesGenerator(adminRoutes), // ** Route Generator gets an array of route info object: 
+      children: routesGenerator(adminRoutes), // ** Route Generator gets an array of route info object:
    },
    {
       path: "/faculty",

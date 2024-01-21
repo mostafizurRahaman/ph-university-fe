@@ -6,11 +6,12 @@ import authReducer from "./features/auth/authSlice";
 export const store = configureStore({
    reducer: {
       auth: authReducer,
+      //  ** connect baseAPi: 
       [baseApi.reducerPath]: baseApi.reducer,
    },
 
    middleware: (getDefaultMiddlewares) =>
-      getDefaultMiddlewares().concat(baseApi.middleware),
+      getDefaultMiddlewares().concat(baseApi.middleware),  //  ** connect baseAPi with middleware
 });
 
 // ** Root State Type:
