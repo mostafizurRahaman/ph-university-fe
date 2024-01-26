@@ -1,13 +1,9 @@
-
+import AcademicSemester from "../pages/admin/AcademicManagement/AcademicSemester";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
-import CreateOfferedCourse from "../pages/admin/CreateOfferedCourse";
 import CreateStudent from "../pages/admin/CreateStudent";
 import { IRoutes } from "../types";
-
-
-
 
 export const adminRoutes: IRoutes[] = [
    {
@@ -36,12 +32,12 @@ export const adminRoutes: IRoutes[] = [
       ],
    },
    {
-      name: "Course Management",
+      name: "Academic Management",
       children: [
          {
-            name: "Offered Course",
-            path: "create-offered-course",
-            element: <CreateOfferedCourse />,
+            name: "Academic Semester",
+            path: "academic-semester",
+            element: <AcademicSemester />,
          },
       ],
    },

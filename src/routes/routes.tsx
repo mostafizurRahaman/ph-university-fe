@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
-import SignIn from "../pages/SignIn";
+import LogIn from "../pages/LogIn";
 import { routesGenerator } from "../utils/routesGenerator";
 import { adminRoutes } from "./admin.route";
 import facultyRoutes from "./facultyRoutes";
 import studentRoutes from "./student.routes";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
 
 const router = createBrowserRouter([
    {
@@ -20,11 +21,15 @@ const router = createBrowserRouter([
    },
    {
       path: "login",
-      element: <SignIn />,
+      element: <LogIn />,
    },
    {
       path: "/admin",
-      element: <App />,
+      element: (
+         <ProtectedRoute>
+            <App />
+         </ProtectedRoute>
+      ),
       children: routesGenerator(adminRoutes), // ** Route Generator gets an array of route info object:
    },
    {
