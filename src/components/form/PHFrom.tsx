@@ -1,38 +1,52 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Form } from "antd";
 import { CSSProperties, ReactNode } from "react";
 import {
-   FieldValues,
-   FormProvider,
-   SubmitHandler,
-   useForm,
+  FieldValues,
+  FormProvider,
+  SubmitHandler,
+  useForm,
 } from "react-hook-form";
 
 interface IPHForm {
-   onSubmit: SubmitHandler<FieldValues>;
-   children: ReactNode;
-   styles?: CSSProperties;
-   defaultValues?: Record<string, unknown>;
+  onSubmit: SubmitHandler<FieldValues>;
+  children: ReactNode;
+  styles?: CSSProperties;
+  defaultValues?: Record<string, unknown>;
+  resolver?: any; 
 }
 
 interface IFormConfig {
-   defaultValues?: Record<string, unknown>;
+  defaultValues?: Record<string, unknown>;
+  resolver?: any; 
 }
 
-const PHFrom = ({ onSubmit, children, styles, defaultValues }: IPHForm) => {
-   const formConfig: IFormConfig = {};
+const PHFrom = ({ onSubmit, children, styles, defaultValues , resolver}: IPHForm) => {
+  const formConfig: IFormConfig = {};
 
-   if (defaultValues) {
-      formConfig["defaultValues"] = defaultValues;
-   }
+  if (defaultValues) {
+    formConfig["defaultValues"] = defaultValues;
+  }
 
-   const methods = useForm(formConfig);
 
-   return (
-      <FormProvider {...methods}>
-         <form onSubmit={methods.handleSubmit(onSubmit)} style={styles}>
-            {children}
-         </form>
-      </FormProvider>
-   );
+  //  ** set the resolver to formConfig: 
+  if (resolver) {
+    formConfig['resolver'] = resolver
+  }
+
+  const methods = useForm(formConfig);
+
+  return (
+    <FormProvider {...methods}>
+      <Form
+        layout="vertical"
+        onFinish={methods.handleSubmit(onSubmit)}
+        style={styles}
+      >
+        {children}
+      </Form>
+    </FormProvider>
+  );
 };
 
 export default PHFrom;

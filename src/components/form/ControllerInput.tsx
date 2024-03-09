@@ -1,68 +1,51 @@
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import { Controller } from "react-hook-form";
+import ErrorMessage from "../ui/ErrorMessage";
 
 interface IInputProps {
-   label?: string;
-   name: string;
-   type: string;
-   className?: string;
-   inputClassName?: string;
-   labelClassName?: string;
-   placeholder?: string;
-   errorClassName?: string;
-   error?: string;
+  label?: string;
+  name: string;
+  type: string;
+  className?: string;
+  inputClassName?: string;
+  labelClassName?: string;
+  placeholder?: string;
 }
 
 const ControllerInput = ({
-   name,
-   type,
-   className,
-   label,
-   placeholder,
-   error,
+  name,
+  type,
+  className,
+  label,
+  placeholder,
 }: IInputProps) => {
-   return (
-      <div
-         className={`${className}`}
-         style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            width: "100%",
-         }}
-      >
-         <label
-            style={{
-               fontSize: "16px",
-               textTransform: "capitalize",
-               margin: "10px 0px",
-               display: "block",
-            }}
-            htmlFor={name}
-         >
-            {label}
-         </label>
-         <Controller
-            name={name}
-            render={({ field }) => {
-               return (
-                  <Input
-                     {...field}
-                     type={type}
-                     id={name}
-                     placeholder={placeholder}
-                  />
-               );
-            }}
-         ></Controller>
-
-         {error && (
-            <p style={{ color: "red", fontSize: "16px" }}>
-               {error?.charAt(1).toUpperCase()} {error?.slice(1)}
-            </p>
-         )}
-      </div>
-   );
+  return (
+    <div
+      className={`${className}`}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+      }}
+    >
+      <Controller
+        name={name}
+        render={({ field, fieldState: { error } }) => {
+          return (
+            <Form.Item label={label}>
+              <Input
+                {...field}
+                type={type}
+                id={name}
+                placeholder={placeholder}
+              />
+              {error && <ErrorMessage children={error.message} />}
+            </Form.Item>
+          );
+        }}
+      ></Controller>
+    </div>
+  );
 };
 
 export default ControllerInput;

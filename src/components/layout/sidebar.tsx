@@ -25,7 +25,7 @@ const Sidebar = () => {
    const user = useAppSelector(selectCurrentUser) as IUser;
 
    let sidebarItems: ISideBarRoute[] = [];
-   switch (user!.role) {
+   switch (user?.role) {
       case USER_ROLES.ADMIN:
          sidebarItems = sidebarGenerator(adminRoutes, USER_ROLES.ADMIN);
          break;
