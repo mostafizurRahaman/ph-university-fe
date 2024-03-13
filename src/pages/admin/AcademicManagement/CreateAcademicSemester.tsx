@@ -8,11 +8,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AcademicSemesterValidationSchema } from "../../../ValidationSchema/validationSchema";
 
 import { toast } from "sonner";
-import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagement";
+import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagement.api";
 import { IAacademicSemester, IResponse } from "../../../types";
 
 const currentYear = new Date().getFullYear();
-console.log(currentYear);
 const yearOptions = [...Array(5).keys()].map((number) => ({
   value: String(currentYear + number),
   label: String(currentYear + number),

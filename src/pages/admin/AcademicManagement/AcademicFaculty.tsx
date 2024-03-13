@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IFilter } from "../../../types";
-import { useGetAllAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement";
+import { useGetAllAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement.api";
 import { Table, TableColumnsType, TableProps } from "antd";
 import formatDate from "../../../utils/FormatDate";
 

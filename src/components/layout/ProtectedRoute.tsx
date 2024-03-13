@@ -5,24 +5,25 @@ import { Navigate, useLocation } from "react-router-dom";
 import { currentToken } from "../../redux/features/auth/authSlice";
 
 interface IProtectedRouteProps {
-   children: ReactNode;
+  children: ReactNode;
 }
 
 const ProtectedRoute = ({ children }: IProtectedRouteProps) => {
-   const token = useAppSelector(currentToken);
-   const location = useLocation();
+  
+  const token = useAppSelector(currentToken);
+  const location = useLocation();
 
-   if (!token) {
-      return (
-         <Navigate
-            to="/login"
-            state={{ from: location }}
-            replace={true}
-         ></Navigate>
-      );
-   }
+  if (!token) {
+    return (
+      <Navigate
+        to="/login"
+        state={{ from: location }}
+        replace={true}
+      ></Navigate>
+    );
+  }
 
-   return children;
+  return children;
 };
 
 export default ProtectedRoute;

@@ -4,7 +4,7 @@ import { Button, Col, Flex } from "antd";
 import { AcademicFacultyValidationSchema } from "../../../ValidationSchema/validationSchema";
 import ControllerInput from "../../../components/form/ControllerInput";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAddAcademicFacultyMutation } from "../../../redux/features/admin/academicManagement";
+import { useAddAcademicFacultyMutation } from "../../../redux/features/admin/academicManagement.api";
 import { toast } from "sonner";
 import { IAcademicFaculty, IResponse } from "../../../types";
 

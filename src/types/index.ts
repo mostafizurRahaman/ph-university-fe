@@ -6,3 +6,6 @@ export * from "./filter.ts";
 export * from "./academicFaculty.type.ts";
 
 export * from "./academicDepartment.type.ts";
+export * from "./student.type.ts";
+export * from "./admin.type.ts";
+export * from "./courseManagement.type.ts";

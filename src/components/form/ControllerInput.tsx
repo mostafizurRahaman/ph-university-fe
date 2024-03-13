@@ -10,6 +10,7 @@ interface IInputProps {
   inputClassName?: string;
   labelClassName?: string;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 const ControllerInput = ({
@@ -18,6 +19,7 @@ const ControllerInput = ({
   className,
   label,
   placeholder,
+  disabled = false,
 }: IInputProps) => {
   return (
     <div
@@ -35,9 +37,11 @@ const ControllerInput = ({
             <Form.Item label={label}>
               <Input
                 {...field}
+                size="large"
                 type={type}
                 id={name}
                 placeholder={placeholder}
+                disabled={disabled}
               />
               {error && <ErrorMessage children={error.message} />}
             </Form.Item>

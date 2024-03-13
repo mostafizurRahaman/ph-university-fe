@@ -33,8 +33,7 @@ const customBaseQueryWithRefreshToken: BaseQueryFn<
 > = async (args, api, extraOptions): Promise<any> => {
   // ** Promise resolve of baseQuery :  call the baseQuery and pass this three param
   let result;
-  result = await baseQuery(args, api, extraOptions) as IResponse<any>;
-
+  result = (await baseQuery(args, api, extraOptions)) as IResponse<any>;
 
   //  ** If The Request 404 then return  an toast:
   if (result.error?.status === 404) {
@@ -79,6 +78,17 @@ const customBaseQueryWithRefreshToken: BaseQueryFn<
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
+  tagTypes: [
+    "students",
+    "singleStudent",
+    "admins",
+    "singleAdmin",
+    "singleFaculty",
+    "faculties",
+    "semesterRegistrations",
+    "courses",
+    'courseFaculties'
+  ],
   baseQuery: customBaseQueryWithRefreshToken,
   endpoints: () => ({}),
 });

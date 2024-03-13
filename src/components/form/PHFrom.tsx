@@ -13,34 +13,44 @@ interface IPHForm {
   children: ReactNode;
   styles?: CSSProperties;
   defaultValues?: Record<string, unknown>;
-  resolver?: any; 
+  resolver?: any;
 }
 
 interface IFormConfig {
   defaultValues?: Record<string, unknown>;
-  resolver?: any; 
+  resolver?: any;
 }
 
-const PHFrom = ({ onSubmit, children, styles, defaultValues , resolver}: IPHForm) => {
+const PHFrom = ({
+  onSubmit,
+  children,
+  styles,
+  defaultValues,
+  resolver,
+}: IPHForm) => {
   const formConfig: IFormConfig = {};
 
   if (defaultValues) {
     formConfig["defaultValues"] = defaultValues;
   }
 
-
-  //  ** set the resolver to formConfig: 
+  //  ** set the resolver to formConfig:
   if (resolver) {
-    formConfig['resolver'] = resolver
+    formConfig["resolver"] = resolver;
   }
 
   const methods = useForm(formConfig);
+
+  const submit: SubmitHandler<FieldValues> = (data) => {
+    onSubmit(data);
+    methods.reset();
+  };
 
   return (
     <FormProvider {...methods}>
       <Form
         layout="vertical"
-        onFinish={methods.handleSubmit(onSubmit)}
+        onFinish={methods.handleSubmit(submit)}
         style={styles}
       >
         {children}

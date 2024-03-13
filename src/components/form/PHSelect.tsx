@@ -11,11 +11,20 @@ export interface IOption {
 interface IPHSelectProps {
   label: string;
   name: string;
-  options: IOption[];
+  options: IOption[] | undefined;
   placeholder?: string;
+  disabled?: boolean;
+  mode?: "multiple" | undefined;
 }
 
-const PHSelect = ({ label, name, options, placeholder }: IPHSelectProps) => {
+const PHSelect = ({
+  label,
+  name,
+  options,
+  placeholder,
+  disabled,
+  mode,
+}: IPHSelectProps) => {
   return (
     <Controller
       name={name}
@@ -23,7 +32,10 @@ const PHSelect = ({ label, name, options, placeholder }: IPHSelectProps) => {
         return (
           <Form.Item label={label}>
             <Select
+              mode={mode}
               {...field}
+              size="large"
+              disabled={disabled}
               style={{ width: "100%" }}
               placeholder={placeholder}
               options={options}

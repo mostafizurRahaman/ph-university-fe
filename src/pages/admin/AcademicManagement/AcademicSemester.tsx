@@ -1,5 +1,5 @@
 import { Button, Table, TableColumnsType, TableProps } from "antd";
-import { useGetAcademicSemesterQuery } from "../../../redux/features/admin/academicManagement";
+import { useGetAcademicSemesterQuery } from "../../../redux/features/admin/academicManagement.api";
 import { IFilter, type IAacademicSemester } from "../../../types";
 import { useState } from "react";
 

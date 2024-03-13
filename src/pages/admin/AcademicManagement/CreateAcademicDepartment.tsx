@@ -8,7 +8,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import {
   useAddAcademicDepartmentMutation,
   useGetAllAcademicFacultyQuery,
-} from "../../../redux/features/admin/academicManagement";
+} from "../../../redux/features/admin/academicManagement.api";
 import { toast } from "sonner";
 import { IResponse, TAcademicDepartment } from "../../../types";
 

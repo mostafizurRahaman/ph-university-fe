@@ -29,5 +29,17 @@ export interface IResponse<T> {
   message: string;
 }
 
+export type TGender = "male" | "female" | "others";
+export type TBloodGroup =
+  | "A+"
+  | "A-"
+  | "B+"
+  | "B-"
+  | "AB+"
+  | "AB-"
+  | "O+"
+  | "O-";
 
-export type TResponseRedux<T> = IResponse<T> & BaseQueryApi; 
+export type ISemesterRegistrationStatus = "UPCOMING" | "ONGOING" | "ENDED";
+
+export type TResponseRedux<T> = IResponse<T> & BaseQueryApi;
