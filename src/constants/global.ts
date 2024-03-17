@@ -54,3 +54,12 @@ export const semesterRegistrationStatusOptions = semesterRegistrationStatus.map(
     label: el,
   })
 );
+
+export const days: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+export const daysOptions = days.map((item) => {
+  return {
+    label: item,
+    value: item,
+  };
+});

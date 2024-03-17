@@ -11,7 +11,12 @@ import facultyRoutes from "../../routes/facultyRoutes";
 import { ISideBarRoute } from "../../types";
 import studentRoutes from "../../routes/student.routes";
 import { useAppSelector } from "../../redux/hook";
-import { IUser, selectCurrentUser } from "../../redux/features/auth/authSlice";
+import {
+  IUser,
+  currentToken,
+  selectCurrentUser,
+} from "../../redux/features/auth/authSlice";
+import { verifyToken } from "../../utils/verifyToken";
 
 const { Sider } = Layout;
 
@@ -22,7 +27,11 @@ const USER_ROLES = {
   FACULTY: "faculty",
 };
 const Sidebar = () => {
-  const user = useAppSelector(selectCurrentUser) as IUser;
+  const token = useAppSelector(currentToken);
+  let user;
+  if (token) {
+    user = verifyToken(token) as IUser;
+  }
 
   let sidebarItems: ISideBarRoute[] = [];
   switch (user?.role) {

@@ -238,3 +238,50 @@ export const courseValidationSchema = z.object({
   }),
   preRequisiteCourses: z.array(z.string()).optional(),
 });
+
+// ** Offered Course Validation Schema **
+export const offeredCourseValidationSchema = z.object({
+  semesterRegistration: z.string({
+    required_error: "Semester Registration Validation!!",
+  }),
+  academicSemester: z.string({
+    required_error: "Academic semester Is Required!!!",
+  }),
+  academicFaculty: z.string({
+    required_error: "Academic Faculty is Required!!!",
+  }),
+  academicDepartment: z.string({
+    required_error: "Academic Department Is Required!!!",
+  }),
+  course: z.string({
+    required_error: "Course Is Required!!",
+  }),
+  faculty: z.string({
+    required_error: "Faculty Is Required!!!",
+  }),
+  maxCapacity: z.string({
+    required_error: "maxCapacity is Required!!!",
+  }),
+  section: z.string({
+    required_error: "section is Required!!!",
+  }),
+  days: z.array(z.string(), {
+    required_error: "Days is Required !!",
+  }),
+  startTime: z.date({
+    required_error: "startTime is required!!!",
+  }),
+  endTime: z.date({
+    required_error: "endTime is required!!!",
+  }),
+});
+
+//   ** Change Password Validation Schema **
+export const changePasswordValidationSchema = z.object({
+  oldPassword: z.string({
+    required_error: "Old Password Is  Required!!",
+  }),
+  newPassword: z.string({
+    required_error: "New Password Is  Required!!",
+  }),
+});

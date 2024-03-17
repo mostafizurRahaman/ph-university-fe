@@ -43,3 +43,5 @@ export type TBloodGroup =
 export type ISemesterRegistrationStatus = "UPCOMING" | "ONGOING" | "ENDED";
 
 export type TResponseRedux<T> = IResponse<T> & BaseQueryApi;
+
+

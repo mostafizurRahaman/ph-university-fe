@@ -13,7 +13,7 @@ const academicManagementApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getAcademicSemester: build.query({
       query: (args) => {
-        console.log(args);
+     
         const params = new URLSearchParams();
         if (args) {
           args.forEach((param: IFilter) =>
@@ -21,7 +21,7 @@ const academicManagementApi = baseApi.injectEndpoints({
           );
         }
 
-        console.log(params);
+        
         return {
           url: "/academic-semester",
           method: "GET",

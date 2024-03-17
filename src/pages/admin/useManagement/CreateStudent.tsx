@@ -1,7 +1,7 @@
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import PHFrom from "../../../components/form/PHFrom";
 import ControllerInput from "../../../components/form/ControllerInput";
-import { Button, Col,  Divider, Form, Input, Row } from "antd";
+import { Button, Col, Divider, Form, Input, Row } from "antd";
 import PHSelect, { IOption } from "../../../components/form/PHSelect";
 import { bloodOptions, genderOptions } from "../../../constants/global";
 import PHDatePicker from "../../../components/form/PHDatePicker";
@@ -10,21 +10,21 @@ import {
   useGetAllAcademicDepartmentQuery,
 } from "../../../redux/features/admin/academicManagement.api";
 import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
-import {  IStudentInfo } from "../../../types/student.type";
+import { IStudentInfo } from "../../../types/student.type";
 import { IResponse } from "../../../types";
 import { toast } from "sonner";
 import dayjs from "dayjs";
 const defaultValues = {
   name: {
-    firstName: "I am ",
+    firstName: "Mukta ",
     middleName: "Student",
-    lastName: "No : 1",
+    lastName: "1",
   },
   gender: "male",
   bloodGroup: "B+",
   dateOfBirth: dayjs("2003-01-01"),
 
-  email: "student2@gmail.com",
+  email: "mukta1@gmail.com",
   contactNo: "01951976237",
   emergencyContactNo: "01951976238",
   permanentAddress: "Lakshimpur,Chittagong,Bangladesh",
@@ -46,13 +46,13 @@ const defaultValues = {
     contactNo: "555-3333",
   },
 
-  admissionSemester: "65d9e0602e7a91105d4fb0f7",
-  academicDepartment: "65d2d181bcffe1c637b53ac3",
+  admissionSemester: "65d9e0222e7a91105d4fb0f1",
+  academicDepartment: "65d2d2b2d437feaa727f2aa7",
 };
 
 const CreateStudent = () => {
   //   ** StudentCreate Mutation**
-  const [addStudent, { data : studentData, error }] = useAddStudentMutation();
+  const [addStudent, { data: studentData, error }] = useAddStudentMutation();
   console.log(error, studentData);
   //  **Load Academic Semester **
   const { data: sData, isLoading: sLoading } =
@@ -87,7 +87,7 @@ const CreateStudent = () => {
 
     try {
       const res = (await addStudent(formData)) as IResponse<IStudentInfo>;
-      console.log(res)
+      console.log(res);
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });
       } else {
@@ -152,7 +152,6 @@ const CreateStudent = () => {
               <PHDatePicker
                 name="dateOfBirth"
                 label="Date Of Birth"
-                
               ></PHDatePicker>
             </Col>
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>

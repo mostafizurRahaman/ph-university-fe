@@ -1,7 +1,7 @@
-import {  FieldValues, SubmitHandler } from "react-hook-form";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 import PHFrom from "../../../components/form/PHFrom";
 import ControllerInput from "../../../components/form/ControllerInput";
-import { Button, Col, Divider, Flex,  Row } from "antd";
+import { Button, Col, Divider, Flex, Row } from "antd";
 
 import { bloodOptions, genderOptions } from "../../../constants/global";
 import PHDatePicker from "../../../components/form/PHDatePicker";
@@ -52,8 +52,6 @@ const FacultyDetails = () => {
         data,
         id: params.facultyId,
       })) as IResponse<TFaculty>;
-
-      console.log(res);
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });

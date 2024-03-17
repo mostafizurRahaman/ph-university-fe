@@ -44,10 +44,10 @@ const AdminData = () => {
     ...params,
   ]);
 
-  console.log(selectedId);
+
 
   const metaData = adminData?.meta;
-  console.log(adminData);
+ 
   //** Table Data  */
   const tableData = adminData?.data?.map(
     ({
@@ -169,7 +169,7 @@ const AdminData = () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       })) as IResponse<any>;
 
-      console.log("Error", res);
+
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });
@@ -192,7 +192,7 @@ const AdminData = () => {
     try {
       const res = (await deleteAdmin(id)) as IResponse<IAdmin>;
 
-      console.log("Error", res);
+  
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });

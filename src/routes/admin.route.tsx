@@ -17,10 +17,10 @@ import StudentDetails from "../pages/admin/useManagement/StudentDetails";
 import AdminData from "../pages/admin/useManagement/adminData";
 import AdminDetails from "../pages/admin/useManagement/adminDetails";
 import StudentData from "../pages/admin/useManagement/studentData";
-import OfferedCourse from "../pages/faculty/OfferedCourse";
 import { IRoutes } from "../types";
 import SemesterRegistration from "../pages/admin/CourseManagement/semesterRegistration";
 import RegisteredSemester from "../pages/admin/CourseManagement/RegisteredSemester";
+import OfferedCourses from "../pages/admin/CourseManagement/offerCourses";
 
 export const adminRoutes: IRoutes[] = [
   {
@@ -145,7 +145,7 @@ export const adminRoutes: IRoutes[] = [
       {
         name: "Offered Courses",
         path: "offered-courses",
-        element: <OfferedCourse />,
+        element: <OfferedCourses />,
       },
     ],
   },

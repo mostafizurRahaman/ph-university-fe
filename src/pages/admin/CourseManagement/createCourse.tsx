@@ -34,7 +34,7 @@ const CreateCourse = () => {
   //  ** onSubmit : **
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading(" Course Creating...");
-    console.log(data);
+   
 
     const preRequisiteCourses = data?.preRequisiteCourses?.map((el: string) => {
       return {
@@ -54,7 +54,7 @@ const CreateCourse = () => {
       },
     };
 
-    console.log(courseData);
+
 
     try {
       const res = (await addCourse(courseData)) as IResponse<ICourse>;
@@ -62,7 +62,7 @@ const CreateCourse = () => {
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });
 
-        console.log(res.error);
+
       } else {
         toast.success("Course Is Created Successfully!!", {
           id: toastId,

@@ -2,6 +2,7 @@ import {
   ICourse,
   ICourseFaculties,
   IFilter,
+  IOfferedCourse,
   TResponseRedux,
 } from "../../../types";
 import { ISemesterRegistration } from "../../../types/semesterRegistration";
@@ -125,6 +126,45 @@ const courseManagementApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["courseFaculties"],
     }),
+
+    //  ** Offered Course :
+    addOfferedCourse: build.mutation({
+      query: (payload) => {
+        return {
+          url: "/offered-courses/create-offered-course",
+          method: "POST",
+          body: payload,
+        };
+      },
+      invalidatesTags: ["offeredCourse"],
+    }),
+
+    getAllOfferedCourse: build.query({
+      query: (args) => {
+        const params = new URLSearchParams();
+
+        if (args) {
+          args.forEach((el: IFilter) => {
+            params.append(el.name, el.value);
+          });
+        }
+        return {
+          url: "/offered-courses",
+          method: "GET",
+          params,
+        };
+      },
+
+      transformResponse: (response: TResponseRedux<IOfferedCourse[]>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+      
+    }),
+
+   
   }),
 });
 
@@ -141,4 +181,10 @@ export const {
   useAssignCourseFacultiesMutation,
   useRemoveCourseFacultiesMutation,
   useGetCourseFacultiesQuery,
+
+  //  ** Offered Course Mutation and Query Hooks **
+  useAddOfferedCourseMutation,
+  useGetAllOfferedCourseQuery,
+
+  
 } = courseManagementApi;

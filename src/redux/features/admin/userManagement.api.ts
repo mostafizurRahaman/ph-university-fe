@@ -56,7 +56,6 @@ const userManagementApi = baseApi.injectEndpoints({
         };
       },
       transformResponse: (response: TResponseRedux<IStudent>) => {
-        console.log(response);
         return {
           data: response.data,
         };
@@ -130,7 +129,6 @@ const userManagementApi = baseApi.injectEndpoints({
         };
       },
       transformResponse: (response: TResponseRedux<IAdmin>) => {
-        console.log(response);
         return {
           data: response.data,
         };
@@ -204,7 +202,6 @@ const userManagementApi = baseApi.injectEndpoints({
         };
       },
       transformResponse: (response: TResponseRedux<TFaculty>) => {
-        console.log(response);
         return {
           data: response.data,
         };
@@ -232,6 +229,8 @@ const userManagementApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["faculties"],
     }),
+
+    
   }),
 });
 

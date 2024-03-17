@@ -32,7 +32,7 @@ const PHDatePicker = ({
               value={value ? dayjs(value) : null}
               onChange={(value) => {
                 if (value) {
-                  console.log(value, dayjs(value).toDate());
+                 
                   onChange(dayjs(value).toDate());
                 }
               }}

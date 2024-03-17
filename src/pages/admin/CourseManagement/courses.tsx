@@ -173,7 +173,7 @@ const RemoveFacultiesModal = ({ item }: { item: string }) => {
   const { data: courseFaculties, isFetching } =
     useGetCourseFacultiesQuery(item);
 
-  console.log(courseFaculties);
+
   const courseOptions = courseFaculties?.data?.faculties?.map(
     ({ name: { firstName, middleName, lastName }, _id }) => {
       return {

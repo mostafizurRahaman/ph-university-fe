@@ -46,10 +46,10 @@ const FacultyData = () => {
     ...params,
   ]);
 
-  console.log(selectedId);
+
 
   const metaData = facultyData?.meta;
-  console.log(facultyData);
+  
   //** Table Data  */
   const tableData = facultyData?.data?.map(
     ({ _id, name, id, email, contactNo, designation, user }) => ({
@@ -158,7 +158,7 @@ const FacultyData = () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       })) as IResponse<any>;
 
-      console.log("Error", res);
+      
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });
@@ -181,7 +181,7 @@ const FacultyData = () => {
     try {
       const res = (await deleteFaculty(id)) as IResponse<TFaculty>;
 
-      console.log("Error", res);
+      
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });

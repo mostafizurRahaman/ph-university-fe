@@ -34,7 +34,7 @@ const StudentDetails = () => {
     isFetching,
   } = useGetSingleStudentQuery(params?.studentId);
 
-  console.log("studentData", studentData, isLoading, isFetching);
+  
 
   //  **Load Academic Semester **
   const { data: sData, isLoading: sLoading } =
@@ -65,7 +65,6 @@ const StudentDetails = () => {
         id: params.studentId,
       })) as IResponse<IStudent>;
 
-      console.log(res)
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });

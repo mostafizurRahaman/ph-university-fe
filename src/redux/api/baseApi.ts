@@ -39,6 +39,9 @@ const customBaseQueryWithRefreshToken: BaseQueryFn<
   if (result.error?.status === 404) {
     toast.error(result?.error?.data.message);
   }
+  if (result.error?.status === 403) {
+    toast.error(result?.error?.data.message);
+  }
 
   // ** check in error Status Code 401 ? :
   if (result.error?.status === 401) {
@@ -57,8 +60,6 @@ const customBaseQueryWithRefreshToken: BaseQueryFn<
     const token = data?.data?.accessToken;
 
     if (token) {
-      console.log({ token });
-
       // ** get the current User from state :
       const user = (getState() as RootState).auth?.user;
 
@@ -87,7 +88,8 @@ export const baseApi = createApi({
     "faculties",
     "semesterRegistrations",
     "courses",
-    'courseFaculties'
+    "courseFaculties",
+    'offeredCourse'
   ],
   baseQuery: customBaseQueryWithRefreshToken,
   endpoints: () => ({}),

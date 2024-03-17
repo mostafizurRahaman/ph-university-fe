@@ -48,7 +48,7 @@ const CreateAdmin = () => {
 
     try {
       const res = (await addAdmin(formData)) as IResponse<IAdmin>;
-      console.log(res);
+      
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });
       } else {

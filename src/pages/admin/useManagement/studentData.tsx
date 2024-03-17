@@ -44,10 +44,10 @@ const StudentData = () => {
     ...params,
   ]);
 
-  console.log(selectedId);
+  
 
   const metaData = studentData?.meta;
-  console.log(studentData);
+  
   //** Table Data  */
   const tableData = studentData?.data?.map(
     ({ _id, name, id, user, email, contactNo }) => ({
@@ -170,7 +170,7 @@ const StudentData = () => {
     try {
       const res = (await deleteStudent(id)) as IResponse<IStudent>;
 
-      console.log("Error", res);
+      
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId, duration: 2000 });
